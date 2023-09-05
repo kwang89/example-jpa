@@ -9,6 +9,10 @@ import java.util.List;
 
 public class Chapter2 {
 
+    public static void main(String[] args) {
+        run();
+    }
+
     public static void run() {
         //엔티티 매니저 팩토리 생성
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("example-jpa");
@@ -36,7 +40,7 @@ public class Chapter2 {
     public static void logic(EntityManager em) {
 
         String id = "id1";
-        Member member = new Member();
+        Chapter2Member member = new Chapter2Member();
         member.setId(id);
         member.setUsername("지한");
         member.setAge(2);
@@ -45,18 +49,18 @@ public class Chapter2 {
         em.persist(member);
 
         //한 건 조회
-        Member findMember = em.find(Member.class, id);
+        Chapter2Member findMember = em.find(Chapter2Member.class, id);
         System.out.println("id= " + id + ", findMember=" + findMember.getUsername() + ", age=" + findMember.getAge());
 
         //수정
         member.setAge(20);
 
         //한 건 조회
-        Member findMember2 = em.find(Member.class, id);
+        Chapter2Member findMember2 = em.find(Chapter2Member.class, id);
         System.out.println("id= " + id + ", findMember=" + findMember2.getUsername() + ", age=" + findMember2.getAge());
 
         //목록 조회
-        List<Member> members = em.createQuery("select a from Member a", Member.class).getResultList();
+        List<Chapter2Member> members = em.createQuery("select a from Chapter2Member a", Chapter2Member.class).getResultList();
         System.out.println("members.size=" + members.size());
 
         //삭제
