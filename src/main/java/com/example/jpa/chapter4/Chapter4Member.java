@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
@@ -13,89 +14,55 @@ import jakarta.persistence.UniqueConstraint;
 import java.util.Date;
 
 @Entity
-@Table(
-    name = "CHAPTER4_MEMBER",
-    uniqueConstraints = {@UniqueConstraint(
-        name = "NAME_AGE_UNIQUE",
-        columnNames = {"NAME", "AGE"}
-    )}
-)
 public class Chapter4Member {
 
     @Id
-    @Column(name = "ID")
-    private String id;
+    @GeneratedValue
+    @Column(name = "member_id")
+    private Long id;
 
-    @Column(name = "NAME", nullable = false, length = 10)
-    private String username;
+    private String name;
+    private String city;
+    private String street;
+    private String zipcode;
 
-    private Integer age;
-
-    @Enumerated(EnumType.STRING)
-    private RoleType roleType;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModifiedDate;
-
-    @Lob
-    private String description;
-
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getCity() {
+        return city;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public RoleType getRoleType() {
-        return roleType;
+    public String getStreet() {
+        return street;
     }
 
-    public void setRoleType(RoleType roleType) {
-        this.roleType = roleType;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public String getZipcode() {
+        return zipcode;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
     }
 }
